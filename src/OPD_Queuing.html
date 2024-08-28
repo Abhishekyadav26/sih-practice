@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPD Queuing</title>
+    <link rel="stylesheet" href="./output.css">
+    <script src="https://kit.fontawesome.com/231b0739fa.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Header part -->
+    <div id="Header" class="flex p-3 bg-black text-white justify-around items-center h-1/4">
+        <div class="flex items-center justify-around p-3 gap-x-12">
+            <h1 class="font-sans font-semibold text-3xl">
+                <i class="fa-regular fa-hospital"></i>
+                <a href="#home">Hospital Management</a>
+            </h1>
+            <div class="flex gap-5 font-sans text-base">
+                <a href="#" class="hover:underline">Dashboard</a>
+                <a href="#" class="hover:underline">appointments</a>
+                <a href="#" class="hover:underline">Bed Management</a>
+                <a href="#" class="hover:underline">Admissions</a>
+                <a href="#" class="hover:underline">City Network</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Section start here -->
+     <div id="main" class="h-screen flex flex-col mt-5 ">
+        <div class="h-1/2 border w-1/2 mx-96 rounded-lg">
+            <div class="rounded-md p-8 flex flex-col gap-y-5 font-sans mx-10">
+                <div class="pt-10">
+                    <h1 class="text-4xl font-semibold">OPD Queue</h1>
+                    <h3 class="text-lg font-medium text-gray-500 pt-5">Monitor the current queue and wait times in the outpatient departments.</h3>
+                </div>
+                <div class="pt-12 flex ">
+                    <div class="border p-4 rounded-lg hover:shadow-md hover:cursor-pointer">
+                        <h1 class="text-4xl font-semibold">125</h1>
+                        <h3 class="text-lg font-medium text-gray-500 ">Patients in Queue</h3>
+                    </div>
+                    <div class="mx-[30%] p-4 border rounded-lg hover:shadow-md hover:cursor-pointer">
+                        <h1 class="text-4xl font-semibold">45 min</h1>
+                        <h3 class="text-lg font-medium text-gray-500">Average Wait Time</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="h-1/2 w-1/2 mx-96 border m-6 rounded-lg">
+            <div class="p-8 flex flex-col gap-y-5 font-sans mx-10">
+                <h1 class="text-3xl font-semibold">OPD Appointment Booking</h1>
+                <h3 class="text-lg font-medium text-gray-500 ">Allow patients to schedule appointments for outpatient departments.</h3>
+            </div>
+            <div class="m-3">
+                <div class="flex border rounded-lg m-5 p-3 hover:shadow-lg">
+                    <div class="flex-col font-sans">
+                        <h2 class="text-lg font-bold">Cardiology</h2>
+                        <h3 class="text-base font-medium text-gray-500 ">Next available: 2 days</h3>
+                    </div>
+                    <div class="mx-40 mt-2">
+                        <button class="bg-black text-white font-bold rounded-lg p-[6px] hover:bg-opacity-80">Book Appointment</button>
+                    </div>
+                </div>
+                <div class="flex border rounded-lg m-5 p-3 hover:shadow-lg">
+                    <div class="flex-col font-sans">
+                        <h2 class="text-lg font-bold">Orthopedics</h2>
+                        <h3 class="text-base font-medium text-gray-500">Next available: 5 days</h3>
+                    </div>
+                    <div class="mx-40 mt-2">
+                        <button class="bg-black text-white font-bold rounded-lg p-[6px] hover:bg-opacity-80">Book Appointment</button>
+                    </div>
+                </div>
+                <div class="flex border rounded-lg m-5 p-3 hover:shadow-lg">
+                    <div class="flex-col font-sans">
+                        <h2 class="text-lg font-bold">Pediatrics</h2>
+                        <h3 class="text-base font-medium text-gray-500">Next available: 1 day</h3>
+                    </div>
+                    <div class="mx-40 mt-2">
+                        <button class="bg-black text-white font-bold rounded-lg p-[6px] hover:bg-opacity-80">Book Appointment</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+
+    <!-- footer part start here -->
+    <div id="footer" class="h-16 bg-black text-white flex justify-between items-center mt-10">
+        <h2 class="mx-8">© 2024 Hospital Management. All rights reserved.</h2>
+        <div class="flex gap-5 mx-8">
+            <a href="#Privacy Policy" class="hover:underline">Privacy Policy</a>
+            <a href="#Terms of Service" class="hover:underline">Terms of Service</a>
+            <a href="#Privacy Policy" class="hover:underline">Contact Us</a>
+        </div>
+    </div>
+</body>
+</html>
