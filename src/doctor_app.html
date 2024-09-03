@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocBook - Find and Book Your Doctor</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #fff;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 1rem 0;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .logo img {
+            width: 40px;
+            height: 40px;
+        }
+        .logo h1 {
+            font-size: 1.5rem;
+            color: #000000;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+        }
+        nav a {
+            text-decoration: none;
+            color: #000000;
+        }
+        nav a:hover {
+            color: #000000;
+        }
+        .sign-in-btn {
+            background-color: #000000;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            text-decoration: none;
+        }
+        .sign-in-btn:hover {
+            background-color: #000000;
+        }
+
+        /* Main content styles */
+        main {
+            background-color: #f8fafc;
+            padding: 2rem 0;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+        .search-section {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        .search-bar {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .search-bar input {
+            flex-grow: 1;
+            padding: 0.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.25rem;
+        }
+        .search-bar button {
+            background-color: #000000;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+        }
+        .filters {
+            display: flex;
+            gap: 1rem;
+        }
+        .filters select {
+            padding: 0.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.25rem;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .tabs button {
+            background-color: #e2e8f0;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+        }
+        .tabs button.active {
+            background-color: #000000;
+            color: #fff;
+        }
+        .doctor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .doctor-card {
+            background-color: #fff;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .doctor-card-header {
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .doctor-card-header img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .doctor-info h3 {
+            margin-bottom: 0.25rem;
+        }
+        .doctor-info p {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+        .doctor-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            margin-top: 0.25rem;
+        }
+        .doctor-rating span {
+            color: #eab308;
+        }
+        .doctor-card-content {
+            padding: 0 1rem 1rem;
+        }
+        .doctor-card-content p {
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            color: #000000;
+        }
+        .doctor-card-footer {
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        .doctor-card-footer button {
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+        }
+        .online-btn {
+            background-color: #fff;
+            border: 1px solid #000000;
+            color: #000000;
+        }
+        .book-btn {
+            background-color: #000000;
+            border: none;
+            color: #fff;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #000000;
+            color: #fff;
+            padding: 2rem 0;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        .footer-section h4 {
+            margin-bottom: 1rem;
+        }
+        .footer-section ul {
+            list-style: none;
+        }
+        .footer-section a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .footer-section a:hover {
+            text-decoration: underline;
+        }
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .social-icons a {
+            color: #fff;
+        }
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.875rem;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .filters {
+                flex-wrap: wrap;
+            }
+            .doctor-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="/placeholder.svg?height=40&width=40" alt="DocBook Logo">
+                <h1>DocBook</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Find Doctors</a></li>
+                    <li><a href="#">My Appointments</a></li>
+                    <li><a href="#">Help</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="sign-in-btn">Sign In / Register</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Find and Book Your Doctor</h2>
+            <section class="search-section">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search doctors by name or specialty">
+                    <button>Search</button>
+                </div>
+                <div class="filters">
+                    <select>
+                        <option value="">Location</option>
+                        <option value="new-york">Kolkata</option>
+                        <option value="los-angeles">New Town</option>
+                        <option value="chicago">Chicago</option>
+                        <option value="houston">Houston</option>
+                    </select>
+                    <select>
+                        <option value="">Specialty</option>
+                        <option value="general">General Practitioner</option>
+                        <option value="pediatrician">Pediatrician</option>
+                        <option value="cardiologist">Cardiologist</option>
+                        <option value="dermatologist">Dermatologist</option>
+                    </select>
+                    <select>
+                        <option value="">Available Date</option>
+                        <option value="today">Today</option>
+                        <option value="tomorrow">Tomorrow</option>
+                        <option value="this-week">This Week</option>
+                        <option value="next-week">Next Week</option>
+                    </select>
+                </div>
+            </section>
+
+            <section class="doctors-section">
+                <div class="tabs">
+                    <button class="active">All</button>
+                    <button>Online Consultation</button>
+                    <button>In-Person Visit</button>
+                </div>
+                <div class="doctor-grid">
+                    <!-- Repeat this card structure for each doctor -->
+                    <div class="doctor-card">
+                        <div class="doctor-card-header">
+                            <img src="/placeholder.svg?height=80&width=80&text=Dr.+1" alt="Doctor 1">
+                            <div class="doctor-info">
+                                <h3>Dr. John Doe</h3>
+                                <p>Cardiologist</p>
+                                <div class="doctor-rating">
+                                    <span>★★★★☆</span>
+                                    <p>4.8 (120 reviews)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="doctor-card-content">
+                            <p>10 years experience</p>
+                            <p>New York Medical Center</p>
+                            <p>Available Today</p>
+                        </div>
+                        <div class="doctor-card-footer">
+                            <button class="online-btn">Online</button>
+                            <button class="book-btn">Book Appointment</button>
+                        </div>
+                    </div>
+                    <div class="doctor-card">
+                        <div class="doctor-card-header">
+                            <img src="/placeholder.svg?height=80&width=80&text=Dr.+1" alt="Doctor 1">
+                            <div class="doctor-info">
+                                <h3>Dr. John Doe</h3>
+                                <p>Cardiologist</p>
+                                <div class="doctor-rating">
+                                    <span>★★★★☆</span>
+                                    <p>4.8 (120 reviews)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="doctor-card-content">
+                            <p>10 years experience</p>
+                            <p>New York Medical Center</p>
+                            <p>Available Today</p>
+                        </div>
+                        <div class="doctor-card-footer">
+                            <button class="online-btn">Online</button>
+                            <button class="book-btn">Book Appointment</button>
+                        </div>
+                    </div>
+                    <div class="doctor-card">
+                        <div class="doctor-card-header">
+                            <img src="/placeholder.svg?height=80&width=80&text=Dr.+1" alt="Doctor 1">
+                            <div class="doctor-info">
+                                <h3>Dr. John Doe</h3>
+                                <p>Cardiologist</p>
+                                <div class="doctor-rating">
+                                    <span>★★★★☆</span>
+                                    <p>4.8 (120 reviews)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="doctor-card-content">
+                            <p>10 years experience</p>
+                            <p>New York Medical Center</p>
+                            <p>Available Today</p>
+                        </div>
+                        <div class="doctor-card-footer">
+                            <button class="online-btn">Online</button>
+                            <button class="book-btn">Book Appointment</button>
+                        </div>
+                    </div>
+                    <div class="doctor-card">
+                        <div class="doctor-card-header">
+                            <img src="/placeholder.svg?height=80&width=80&text=Dr.+1" alt="Doctor 1">
+                            <div class="doctor-info">
+                                <h3>Dr. John Doe</h3>
+                                <p>Cardiologist</p>
+                                <div class="doctor-rating">
+                                    <span>★★★★☆</span>
+                                    <p>4.8 (120 reviews)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="doctor-card-content">
+                            <p>10 years experience</p>
+                            <p>New York Medical Center</p>
+                            <p>Available Today</p>
+                        </div>
+                        <div class="doctor-card-footer">
+                            <button class="online-btn">Online</button>
+                            <button class="book-btn">Book Appointment</button>
+                        </div>
+                    </div>
+                    <div class="doctor-card">
+                        <div class="doctor-card-header">
+                            <img src="/placeholder.svg?height=80&width=80&text=Dr.+1" alt="Doctor 1">
+                            <div class="doctor-info">
+                                <h3>Dr. John Doe</h3>
+                                <p>Cardiologist</p>
+                                <div class="doctor-rating">
+                                    <span>★★★★☆</span>
+                                    <p>4.8 (120 reviews)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="doctor-card-content">
+                            <p>10 years experience</p>
+                            <p>New York Medical Center</p>
+                            <p>Available Today</p>
+                        </div>
+                        <div class="doctor-card-footer">
+                            <button class="online-btn">Online</button>
+                            <button class="book-btn">Book Appointment</button>
+                        </div>
+                    </div>
+                    <div class="doctor-card">
+                        <div class="doctor-card-header">
+                            <img src="/placeholder.svg?height=80&width=80&text=Dr.+1" alt="Doctor 1">
+                            <div class="doctor-info">
+                                <h3>Dr. John Doe</h3>
+                                <p>Cardiologist</p>
+                                <div class="doctor-rating">
+                                    <span>★★★★☆</span>
+                                    <p>4.8 (120 reviews)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="doctor-card-content">
+                            <p>10 years experience</p>
+                            <p>New York Medical Center</p>
+                            <p>Available Today</p>
+                        </div>
+                        <div class="doctor-card-footer">
+                            <button class="online-btn">Online</button>
+                            <button class="book-btn">Book Appointment</button>
+                        </div>
+                    </div>
+                    <!-- Repeat doctor card for a total of 6 cards -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About DocBook</h4>
+                    <p>Connecting patients with the best healthcare professionals for online and offline consultations.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">How it Works</a></li>
+                        <li><a href="#">For Doctors</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p>Email: support@docbook.com</p>
+                    <p>Phone: (123) 456-7890</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 DocBook. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
